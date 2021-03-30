@@ -11,7 +11,7 @@ class App extends React.Component {
     {
       return (
         <div style={{backgroundColor: "black"}}>
-        <Image src={myImage} size='medium' rounded centered />
+        <Image src={myImage} size='medium' rounded centered style={{marginTop:'10%'}}/>
         <br/>
         <Grid centered > 
           <Grid.Row>
