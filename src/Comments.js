@@ -11,7 +11,7 @@ function AddComment(params) {
         <Comment>
           <Comment.Avatar src={myImage} />
           <Comment.Content>
-            <Comment.Author as='a' style = {{color:"white"}} >Matt</Comment.Author>
+            <Comment.Author as='a' style = {{color:"white"}} >{params.username}</Comment.Author>
             <Comment.Metadata>
               <div style = {{color:"white"}} >{params.time}</div>
             </Comment.Metadata>
@@ -42,7 +42,8 @@ constructor()
         hint:"Comments",
         InputComment: "",
         Comment_list:[],
-        Time:""
+        Time:"",
+        user: ""
     }
 }
 
@@ -52,7 +53,8 @@ AddTolist = (e,a) => {
     this.setState(prevState => ({
         Comment_list : [...prevState.Comment_list, e],
         InputComment : "",
-        Time: a
+        Time: a,
+        user:this.props.username
       }))  
 
 
@@ -66,14 +68,15 @@ AddTolist = (e,a) => {
         console.log(this.state.Comment_list);
 
       return (
-        <Comment.Group style={{
-            marginLeft: '32%'
-        }}>
+
+
+
+        <Comment.Group>
         <Header as='h3' dividing style = {{color:"white"}}>
           Comments
         </Header>
 
-        {this.state.Comment_list.map(comments => <AddComment content = {comments} time = {this.state.Time}></AddComment>)}
+        {this.state.Comment_list.map(comments => <AddComment content = {comments} time = {this.state.Time} username = {this.state.user}></AddComment>)}
         <Form reply>
           <Form.TextArea value = {this.state.InputComment} 
                         placeholder ={this.state.hint} 

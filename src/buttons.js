@@ -25,13 +25,6 @@ class Buttons extends React.Component
                 likes: prevState.likes+1
             }))
     }
-    Add_share = () =>
-    {
-        this.setState(prevState =>
-            ({
-                share: prevState.share+1
-            }))
-    }
 
     render()
     {
@@ -53,9 +46,9 @@ class Buttons extends React.Component
                         basic: true,
                         color: 'blue',
                         pointing: 'left',
-                        content: this.state.share,
+                        content: this.props.visitor,
                     }}
-                    onClick = {() => this.Add_share() }
+                    onClick = {() => this.props.toggle() }
                 />
             </div>
 
