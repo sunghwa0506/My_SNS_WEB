@@ -1,17 +1,21 @@
 import React from 'react';
-import {Image, Divider, Header, Icon, Grid,Button,Menu} from 'semantic-ui-react'
+import {Image, Divider, Header, Icon, Grid,Button,Menu, Segment } from 'semantic-ui-react'
 import Comments from './Comments.js'
 import Buttons from './buttons.js'
 import myImage from './ir.jpg';
 import ModalScrollingExample from './Visitor.js';
-import auth from "./fb.js";
 import firebase from "firebase"
+import auth from "./fb.js";
+
+
 
 
 var provider = new firebase.auth.GoogleAuthProvider();
 
 
-class App extends React.Component {
+
+
+class Home extends React.Component {
 
   constructor()
   {
@@ -20,12 +24,19 @@ class App extends React.Component {
     {
       user:"Visitor",
       isopen : false,
-      visitor:["test1","test2","test3"]
+      visitor:["test1","test2","test3"],
+      like:0
     }
   }
 
+  componentDidMount = () =>
+  {
+    
+  }
 
-  login = () => {
+
+  google_sign = () =>
+  {
 
     firebase.auth()
     .signInWithPopup(provider)
@@ -38,9 +49,8 @@ class App extends React.Component {
       // The signed-in user info.
       var user = result.user;
       // ...
-      this.setState({user:user.displayName})
-
-      console.log(this.state.user);
+      this.setState({user:user.displayName});
+      console.log(user);
     }).catch((error) => {
       // Handle Errors here.
       var errorCode = error.code;
@@ -51,8 +61,38 @@ class App extends React.Component {
       var credential = error.credential;
       // ...
     });
+
+
   }
+
+
+  login = () => {
+
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+  .then(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if(user){
+        this.setState({user:user.displayName});
+      }
+      else
+      {
+        this.google_sign();
+      }
+    })
+    
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  });
+
+
+   }
+
   
+    
+
 
 
   toggleModle = () =>
@@ -66,15 +106,9 @@ class App extends React.Component {
     
     render()
     {
+
       return (
         <div style={{backgroundColor: "black", color:"white"}}>
-<Header size='huge' style = {{textAlign: 'center', color:"white",paddingTop: '40px'}}>Personal SNS WEB</Header>
-<Menu  inverted widths={3}>
-        <Menu.Item
-          name='home'/>
-        <Menu.Item>Hello {this.state.user}!</Menu.Item>
-        <Menu.Item name='Login' onClick = {() => this.login()}/>
-      </Menu>
 
         <Image src={myImage} size='medium' rounded centered style={{marginTop:'10%'}}/>
         <br/>
@@ -100,7 +134,7 @@ class App extends React.Component {
        </Grid>
     <Grid.Row>
       <Grid centered columns = {3}>
-        <Grid.Column > <Comments username = {this.state.user}/></Grid.Column>
+        <Grid.Column > <Comments key = {this.state.user} user = {this.state.user}/></Grid.Column>
    
     </Grid>
     </Grid.Row>
@@ -110,5 +144,4 @@ class App extends React.Component {
     }
 
 }
-
-export default App;
+export default Home;
