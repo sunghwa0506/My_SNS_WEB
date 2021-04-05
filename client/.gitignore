@@ -9,10 +9,12 @@
 
 
 src/fb.js
+
+
+
 /build
-.firebaserc
 /node_modules
-firebase.json
+
 
 # misc
 .DS_Store
