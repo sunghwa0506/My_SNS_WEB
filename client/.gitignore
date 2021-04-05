@@ -8,11 +8,11 @@
 /coverage
 
 
-/src/fb.js
+src/fb.js
 /build
-/firebaserc
+.firebaserc
 /node_modules
-/firebase.json
+firebase.json
 
 # misc
 .DS_Store
