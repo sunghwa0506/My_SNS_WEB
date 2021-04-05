@@ -14,13 +14,8 @@ class reply extends React.Component{
 
         if(this.props.usernmae == this.props.comments.writer )
         {
-            db.collection("comments").doc(this.props.comments.id).delete().then(() => {
-                console.log("Document successfully deleted!");
-            }).catch((error) => {
-                console.error("Error removing document: ", error);
-            }).then(
-                this.props.load_comment()
-            )
+            
+            this.props.load_comments(this.props.comments.id)
         }
         else
         {
@@ -43,7 +38,6 @@ class reply extends React.Component{
                 <Comment.Text  style = {{color:"white"}}>{this.props.comments.content}</Comment.Text>
                 <Comment.Actions>
                   <Comment.Action style = {{color:"salmon"}} onClick = {this.delete}>Delete</Comment.Action>
-                  <Comment.Action style = {{color:"salmon"}} onClick = {this.delete}>Modify</Comment.Action>
                  </Comment.Actions>
               </Comment.Content>
             </Comment>

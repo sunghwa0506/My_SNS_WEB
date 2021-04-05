@@ -60,7 +60,6 @@ componentDidMount = () =>
   this.load_comments();
 }
 
-
 AddTolist = (e,a) => {
   let reply = 
   {
@@ -80,8 +79,41 @@ AddTolist = (e,a) => {
     this.load_comments();
 }
 
+  Delete = (comment_id) =>
+  {
+
+    let temp = [];
+    temp = this.state.Comment_list;
+   
+    temp.find(function(item, i) {
+      if(item.id === comment_id)
+      {
+        
+        return(temp.splice(i,1));
+      }
+      else{
+        console.log(temp,comment_id)
+      }
+    })
+
+    db.collection("comments").doc(comment_id).delete().then(() => {
+      console.log("Document successfully deleted!");
+  }).catch((error) => {
+      console.error("Error removing document: ", error);
+  });
+
+  this.setState(
+    {
+      Comment_list:temp
+    }
+  )
+
+  }
+
+
     render()
     {
+      console.log(this.state.Comment_list.length)
       
       return (
         <Comment.Group>
@@ -98,7 +130,7 @@ AddTolist = (e,a) => {
         </Form>
         
         {this.state.Comment_list.map((comment)=>
-        <Reply comments = {comment} usernmae = {this.state.user} load_comment={this.load_comments}></Reply>)}
+        <Reply comments = {comment} usernmae = {this.props.user} load_comments={this.Delete}></Reply>)}
         
       </Comment.Group>
       );

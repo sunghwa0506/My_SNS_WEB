@@ -31,67 +31,12 @@ class Home extends React.Component {
 
   componentDidMount = () =>
   {
-    
-  }
-
-
-  google_sign = () =>
-  {
-
-    firebase.auth()
-    .signInWithPopup(provider)
-    .then((result) => {
-      /** @type {firebase.auth.OAuthCredential} */
-      var credential = result.credential;
-  
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = credential.accessToken;
-      // The signed-in user info.
-      var user = result.user;
-      // ...
-      this.setState({user:user.displayName});
-      console.log(user);
-    }).catch((error) => {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    });
-
-
-  }
-
-
-  login = () => {
-
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
-  .then(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      if(user){
-        this.setState({user:user.displayName});
-      }
-      else
-      {
-        this.google_sign();
-      }
+    this.setState({
+      user: this.props.user
     })
-    
-  })
-  .catch((error) => {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-  });
+  }
 
 
-   }
-
-  
-    
 
 
 
@@ -134,7 +79,7 @@ class Home extends React.Component {
        </Grid>
     <Grid.Row>
       <Grid centered columns = {3}>
-        <Grid.Column > <Comments key = {this.state.user} user = {this.state.user}/></Grid.Column>
+        <Grid.Column > <Comments key = {this.state.user} user = {this.props.user}/></Grid.Column>
    
     </Grid>
     </Grid.Row>
