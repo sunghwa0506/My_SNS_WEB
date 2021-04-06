@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {projectStorage, db,timestamp} from '../fb';
+import {projectStorage, db,timestamp} from '../component/fb';
 
 
 const UseStorage = (file) =>

@@ -21,10 +21,10 @@ constructor()
     }
 }
 
-load_comments = () =>
+load_comments = async() =>
 {
   let getComments = [];
-  db.collection("comments").get().then((querySnapshot) => {
+   await db.collection("comments").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       let temp = doc.data();
       temp.id = doc.id;
@@ -108,13 +108,13 @@ AddTolist = (e,a) => {
     }
   )
 
-  }
 
+  }
+ 
 
     render()
     {
-      console.log(this.state.Comment_list.length)
-      
+
       return (
         <Comment.Group>
         <Header as='h3' dividing style = {{color:"white"}}>

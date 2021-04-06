@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import {db} from '../fb';
+import {db} from '../component/fb';
 
 
 const UseFireStore = (collection) =>

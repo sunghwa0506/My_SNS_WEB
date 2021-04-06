@@ -2,10 +2,10 @@ import React from 'react';
 import {Image, Divider, Header, Icon, Grid,Button,Menu, Segment } from 'semantic-ui-react'
 import Comments from './Comments.js'
 import Buttons from './buttons.js'
-import myImage from './ir.jpg';
+import myImage from '../ir.jpg';
 import ModalScrollingExample from './Visitor.js';
 import firebase from "firebase"
-import auth from "./fb.js";
+
 
 
 
@@ -39,7 +39,6 @@ class Home extends React.Component {
 
 
 
-
   toggleModle = () =>
   {
     this.setState(prev => {
@@ -48,6 +47,9 @@ class Home extends React.Component {
 
     console.log(this.state.isopen)
   }
+
+
+  
     
     render()
     {
@@ -74,8 +76,6 @@ class Home extends React.Component {
       </Divider>
           
           </Grid.Row>
-
-
        </Grid>
     <Grid.Row>
       <Grid centered columns = {3}>

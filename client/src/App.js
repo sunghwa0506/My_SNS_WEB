@@ -1,10 +1,10 @@
 import React from 'react';
-import {Grid, Header,Menu, Segment,Button} from 'semantic-ui-react';
+import {Grid, Header,Menu, Segment} from 'semantic-ui-react';
 import {HashRouter, Route,NavLink, Switch} from 'react-router-dom';
-import Home from "./home.js";
-import LoginButton from "./Login.js"
+import Home from "./component/home";
+import LoginButton from "./component/Login.js"
 import firebase from "firebase"
-import Post_list from './List.js';
+import Post_list from './component/List.js';
 
 
 
