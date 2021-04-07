@@ -3,7 +3,7 @@ import UploadForm from "./Form.js";
 import ImageGrid from './ImageGrid.js';
 import { Grid } from 'semantic-ui-react';
 
-function Post_List(){
+function Post_List({user}){
     
 
       return(
@@ -14,11 +14,12 @@ function Post_List(){
 
           <Grid>
             <Grid.Column width={3}>
+            <UploadForm></UploadForm>
             </Grid.Column>
 
             <Grid.Column width={9}>
-            <UploadForm></UploadForm>
-              <ImageGrid></ImageGrid>
+            
+              <ImageGrid user = {user}></ImageGrid>
             </Grid.Column>
 
             <Grid.Column width={3}>

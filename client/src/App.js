@@ -111,24 +111,23 @@ class App extends React.Component {
       return (
         <div style={{backgroundColor: "black", color:"white"}}>
           <HashRouter>
-           <Grid columns='equal' divided inverted padded style = {{ color:"white",paddingTop: '40px'}}>
+           <Grid  divided inverted padded style = {{ color:"white",paddingTop: '40px'}}>
     <Grid.Row color='black' textAlign='center'>
-      <Grid.Column>
+      <Grid.Column width={3}>
         <Segment color='black' inverted>
         <Segment inverted>
         <Menu inverted secondary>
           <NavLink to ="/Home"><Menu.Item name="Home" active={activeItem === 'Home'} onClick={this.handleItemClick} /></NavLink> 
-          <NavLink to ="/Post"><Menu.Item name='Post' active={activeItem === 'Post'} onClick={this.handleItemClick} /></NavLink>
         </Menu>
       </Segment>
         </Segment>
       </Grid.Column>
-      <Grid.Column>
+      <Grid.Column width={9}>
         <Segment color='black' inverted>
           <Header size='huge' >Personal SNS WEB</Header>
         </Segment>
       </Grid.Column>
-      <Grid.Column>
+      <Grid.Column width={3}>
         <Segment color='black' inverted>
           <span>
           <span><LoginButton user = {this.state.user} loginStaus = {this.state.loginStaus} login = {this.login} logOut = {this.logOut}></LoginButton></span>
@@ -139,12 +138,8 @@ class App extends React.Component {
     </Grid.Row>
   </Grid>
           
-          
-          
-
         <Switch>
-          <Route exact path ="/Home"><Post_list/></Route>
-          <Route exact path ="/Post"><Home user = {this.state.user}></Home></Route>
+          <Route exact path ="/Home"><Post_list user = {this.state.user}/></Route>
         </Switch>
 
           </HashRouter>

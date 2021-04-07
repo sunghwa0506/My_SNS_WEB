@@ -19,6 +19,10 @@ const ProgressBar = ({file, setFile}) =>
     return(    
     <div >
         <Progress percent={progress} color='orange'   size='tiny'/>
+        <div style = {{front:"35"}}>
+        {progress}%
+        </div>
+        
     </div>
     );
 

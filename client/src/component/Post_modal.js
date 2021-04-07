@@ -1,7 +1,9 @@
 import { Button, Header, Image, Modal ,Icon} from 'semantic-ui-react'
 import React, { useEffect,useState } from 'react'
+import Post_Comments from './Post_Comments'
+import Accept_Comment from './accept_Comments'
 
-const ModalExampleModal =  ({isOpenPost, closePost, url}) => {
+const ModalExampleModal =  ({isOpenPost, closePost, url,id,user}) => {
 
     const photo = 
     {
@@ -17,24 +19,23 @@ const ModalExampleModal =  ({isOpenPost, closePost, url}) => {
         <Modal
         open={isOpenPost}
       >
-        <Modal.Header>Select a Photo</Modal.Header>
+        <Modal.Header>Please Comment</Modal.Header>
         <Modal.Content image>
             <Image style = {photo} size='medium' src = {url} bordered ></Image>
           <Modal.Description>
-            <Header>Default Profile Image</Header>
-            <p>
-              We've found the following gravatar image associated with your e-mail
-              address.
-            </p>
-            <p>Is it okay to use this photo?</p>
+            <Header>Comments</Header>
+        
+              <Post_Comments Postid = {id}></Post_Comments>
+        
+           
+              <Accept_Comment  Postid = {id} user= {user}></Accept_Comment>
+        
+
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
-          <Button color='black' onClick={() => { closePost(false)}}>
-            Nope
-          </Button>
           <Button
-            content="Yep, that's me"
+            content="Exit"
             labelPosition='right'
             icon='checkmark'
             onClick={() =>{ closePost(false)}}

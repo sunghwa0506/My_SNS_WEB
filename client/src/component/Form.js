@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import ProgressBar from './progressBar';
-import { Segment, Input } from 'semantic-ui-react'
+import { Segment, Input ,Icon} from 'semantic-ui-react'
 
 
-const UploadForm = () =>
+const UploadForm = ({user}) =>
 {
 
     const [file, setFile] = useState(null);
@@ -34,8 +34,13 @@ const UploadForm = () =>
     return (
         <div style = {{color:"white"}}>
             <form>    
-            <Input type = "file" onChange = {changeHandler}  />
-                <div classname = "output">
+            <label>
+                <input type="file" onChange={changeHandler} />
+                <Icon name = "plus"></Icon>
+            </label>
+
+
+                <div className = "output">
                     {error && <div className = "error">{ error }</div>}
                     {file && <div className = "file">{ file.name }</div>}
                     {file && <ProgressBar file = {file} setFile = {setFile}></ProgressBar>}

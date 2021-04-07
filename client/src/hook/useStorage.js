@@ -14,6 +14,7 @@ const UseStorage = (file) =>
         const storageRef = projectStorage.ref().child('Post_Image/'+file.name);
         const collectionRef = db.collection('Post');
 
+
         storageRef.put(file).on('state_changed',(snap) =>
         {
             let percentage = (snap.bytesTransferred/ snap.totalBytes) * 100;
@@ -26,8 +27,9 @@ const UseStorage = (file) =>
         {
             const url = await storageRef.getDownloadURL();
             const createdAt = timestamp();
-            collectionRef.add({url, createdAt })
-            setUrl(url);
+            
+            collectionRef.add({url, createdAt });
+            setUrl(url);          
         })
 
     }, [file]);
