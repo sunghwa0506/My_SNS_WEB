@@ -3,7 +3,7 @@ import React, { useEffect, useReducer, useState } from 'react';
 import {Button, Comment, Form, Header} from 'semantic-ui-react';
 import PostComment from '../hook/PostComments';
 
-const Accept_Comment = ({Postid,user}) =>
+const Accept_Comment = ({Postid,user,closePost}) =>
 {
 
     const [InputComment, setInputComment] = useState("");
@@ -28,8 +28,20 @@ const Accept_Comment = ({Postid,user}) =>
                         placeholder ={"Please add comments"} 
                         onChange = {(e) => onchangeHandler(e)} />
 
-          <Button content='Add Reply' labelPosition='left' icon='edit' primary 
-          onClick = {() => onClickHandler()}/>
+            <div style={{float: "right", marginBottom:10}}>
+                <Button content='Add Reply' labelPosition='left' icon='edit' primary 
+            onClick = {() => onClickHandler()}/>
+
+                <Button
+                content="Exit"
+                labelPosition='left'
+                icon='checkmark'
+                onClick={() =>{ closePost(false)}}
+                positive
+            />
+            </div>
+
+
         </Form>
     </div>
     )

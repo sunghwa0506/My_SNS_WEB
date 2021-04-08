@@ -10,9 +10,11 @@ const GetComments = (Postid) =>
 
     useEffect(() =>
     {
+
+        
         if(Postid)
         {
-            db.collection("Post_Comment").where("Postid","==",Postid).orderBy('createdAt','asc')
+            const result =  db.collection("Post_Comment").where("Postid","==",Postid).orderBy('createdAt','asc')
             .onSnapshot((querySnapshot) => {
                 console.log("getComments")
                 var comments = [];
@@ -22,9 +24,11 @@ const GetComments = (Postid) =>
 
                 setDoc(comments);
             })
+
+            return () => result();
         }
     
-       
+      
     },[Postid])
 
 

@@ -16,29 +16,26 @@ const CommentDisplay = ({comment}) =>
         let hour = time.getHours();
         let minutes = time.getMinutes();
         let second = time.getSeconds()
-        Date = month + "/" +date+ "/"+ year+' '+ hour+": "+minutes+": "+ second;
+        Date = month + "/" +date+ "/"+ year+' '+ hour+": "+minutes;
     }
  
 
 
     return (
-        <div>
+        <div className="comments">
             <Comment>
-              <Comment.Content>
                 <span>
                 <Icon name = "user outline"></Icon>
                 <Comment.Author as='a' style = {{color:"Navy"}} >{comment.user}</Comment.Author>
                 </span>
+                <div className='comments_list'>{comment.InputComment}</div>
                 <Comment.Metadata>
-                  <div >{Date}</div>
+                  <div>{Date}</div>
                 </Comment.Metadata>
-                <Comment.Text >{comment.InputComment}</Comment.Text>
                 <Comment.Actions>
                   <Comment.Action style = {{color:"salmon"}} >Delete</Comment.Action>
                  </Comment.Actions>
-              </Comment.Content>
             </Comment>
-            <br/>
         </div>
     )
 

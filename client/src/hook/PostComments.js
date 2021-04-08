@@ -7,18 +7,21 @@ const PostComment = (Click,InputComment,Postid,setClick,setInputComment,user) =>
 {
 
     const [docID, setdocID] = useState(null);
-    const createdAt = timestamp();
     
-
+    
+   
 
     useEffect(() =>
     {
        
-
+        
         if(InputComment && Click)
         {
+            
+            const createdAt = timestamp();
 
-            db.collection("Post_Comment").add({Postid,createdAt,InputComment,user}).then((docRef) => {
+            console.log("test from postCommetns "+ Postid+ " "+InputComment + " " +createdAt + " " +user)
+             db.collection("Post_Comment").add({Postid,createdAt,InputComment,user}).then((docRef) => {
                 setdocID(docRef.id)
                 console.log("Document written with ID: ", docRef.id);
             })
