@@ -6,14 +6,13 @@ import {db,timestamp} from '../component/fb';
 const PostComment = (Click,InputComment,Postid,setClick,setInputComment,user) =>
 {
 
-    const [docID, setdocID] = useState(null);
+    const [sucess, setsucess] = useState(null);
     
     
    
 
     useEffect(() =>
     {
-       
         
         if(InputComment && Click)
         {
@@ -22,7 +21,7 @@ const PostComment = (Click,InputComment,Postid,setClick,setInputComment,user) =>
 
             console.log("test from postCommetns "+ Postid+ " "+InputComment + " " +createdAt + " " +user)
              db.collection("Post_Comment").add({Postid,createdAt,InputComment,user}).then((docRef) => {
-                setdocID(docRef.id)
+                
                 console.log("Document written with ID: ", docRef.id);
             })
             .catch((error) => {
@@ -30,13 +29,17 @@ const PostComment = (Click,InputComment,Postid,setClick,setInputComment,user) =>
             });
 
             setInputComment("")
+            setsucess(true)
         }
- 
+        if(!InputComment&&Click)
+        {
+            setsucess(false)
+        }
+        
         setClick(false)
-    },[Click,useState,InputComment])
+    },[Click,InputComment])
 
-  
-    return {docID};
+    return {sucess};
 }
 
 

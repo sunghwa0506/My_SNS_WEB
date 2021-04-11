@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
-import {BrowserRouter as Router, Route,NavLink, Switch} from 'react-router-dom';
-import LoginButton from "./component/Login.js"
-import firebase from "firebase"
-import Post_list from './component/List.js';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Post_list from './component/Home/home.js';
 import Navigator from './component/Navigator';
+import About from './component/About/about'
+import Share_Interview from './component/Share/shareInterview';
+import WriteInterviewExperience from './component/Share/write';
+
 
 function App ()
 {
@@ -19,6 +21,9 @@ function App ()
       <div>
         <Switch>
           <Route exact path = "/"><Post_list user ={user}/></Route>
+          <Route exact path = "/about"><About></About></Route>
+          <Route exact path = "/interview"><Share_Interview></Share_Interview></Route>
+          <Route exact path = "/write"><WriteInterviewExperience></WriteInterviewExperience></Route>
         </Switch>
       </div>
     </Router>

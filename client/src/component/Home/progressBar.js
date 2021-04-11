@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Progress } from 'semantic-ui-react'
-import UseStorage from '../hook/useStorage';
+import UseStorage from '../../hook/useStorage';
 
 const ProgressBar = ({file, setFile}) =>
 {

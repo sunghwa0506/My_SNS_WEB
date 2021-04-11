@@ -16,9 +16,8 @@ function Post_List({user}){
             <Grid.Column width={3}>
             <UploadForm></UploadForm>
             </Grid.Column>
-
-            <Grid.Column width={9}>
-            
+            <Grid.Column width={10}>
+           
               <ImageGrid user = {user}></ImageGrid>
             </Grid.Column>
 

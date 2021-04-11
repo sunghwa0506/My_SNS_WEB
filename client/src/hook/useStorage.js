@@ -11,27 +11,32 @@ const UseStorage = (file) =>
 
     useEffect (() =>
     {
-        const storageRef = projectStorage.ref().child('Post_Image/'+file.name);
-        const collectionRef = db.collection('Post');
-
-
-        storageRef.put(file).on('state_changed',(snap) =>
+        if(file)
         {
-            let percentage = (snap.bytesTransferred/ snap.totalBytes) * 100;
-            percentage = percentage.toFixed(0);
-            setProgress(percentage);
+            const storageRef = projectStorage.ref().child('Post_Image/'+file.name);
+            const collectionRef = db.collection('Post');
+    
+    
+            storageRef.put(file).on('state_changed',(snap) =>
+            {
+                let percentage = (snap.bytesTransferred/ snap.totalBytes) * 100;
+                percentage = percentage.toFixed(0);
+                setProgress(percentage);
+    
+            }, (err) =>
+            {
+                setError(err);
+            }, async () =>
+            {
+                const url = await storageRef.getDownloadURL();
+                const createdAt = timestamp();
+                
+                collectionRef.add({url, createdAt });
+                setUrl(url);          
+            })
+        }
 
-        }, (err) =>
-        {
-            setError(err);
-        }, async () =>
-        {
-            const url = await storageRef.getDownloadURL();
-            const createdAt = timestamp();
-            
-            collectionRef.add({url, createdAt });
-            setUrl(url);          
-        })
+       
 
     }, [file]);
 

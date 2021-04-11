@@ -34,7 +34,7 @@ const UploadForm = ({user}) =>
     return (
         <div style = {{color:"white"}}>
             <form>    
-            <label>
+            <label class="label">
                 <input type="file" onChange={changeHandler} />
                 <Icon name = "plus"></Icon>
             </label>

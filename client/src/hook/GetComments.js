@@ -3,10 +3,11 @@ import {db} from '../component/fb';
 
 
 
-const GetComments = (Postid) =>
+const GetComments = (Postid,DeleteComments) =>
 {
 
     const [doc, setDoc] = useState([]);
+
 
     useEffect(() =>
     {
