@@ -7,7 +7,6 @@ import About from './component/About/about'
 import Share_Interview from './component/Share/shareInterview';
 import WriteInterviewExperience from './component/Share/write';
 
-
 function App ()
 {
 

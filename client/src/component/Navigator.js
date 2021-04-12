@@ -10,11 +10,11 @@ const Navigator = () =>
             <div className = "links"></div>
             <Link to = '/'>Home</Link>
             <div class="dropdown">
-            <a href="javascript:void(0)">Share</a>
-            <div class="dropdown-content">
+            <a >Share</a>
+            <div className="dropdown-content">
             <Link to="/interview">Interview Experience</Link>
-            <Link to="javascript:void(0)">Comming Soon</Link>
-            <Link to="javascript:void(0)">Comming Soon</Link>
+            <Link to="/">Comming Soon</Link>
+            <Link to="/">Comming Soon</Link>
             </div>
             </div>
             <Link to = '/about'>About</Link>

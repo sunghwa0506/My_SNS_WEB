@@ -8,7 +8,7 @@
 
 body
 {
-  background-color: blanchedalmond;
+  background-color: #F0F8FF;
 }
 
 /*Navigation Style */
@@ -17,7 +17,8 @@ body
   display: flex;
   align-items: center;
   margin:0 auto;
-  border-bottom : 1px soild #f2f2f2
+  border-bottom : 1px soild #f2f2f2;
+  font-size: larger;
 }
 .navbar h1
 {
@@ -34,7 +35,7 @@ body
   margin-left: 16px;
   text-decoration: none;
   padding :6px;
-
+  color: DarkBlue;
 }
 
 .navbar a:hover
@@ -143,6 +144,11 @@ body
       max-height : 600px;
       
   }
+  .posting_img{
+    max-width: 100%;
+    max-height: 100%;
+    display:block;
+  }
 
   .comments
   {
@@ -195,6 +201,11 @@ body
 
 }
 
+img.ui.image {
+  display: block;
+  margin: 0px auto;
+}
+
 
 /*Share Inverview Style*/
 .WriteBtn{
@@ -222,6 +233,7 @@ body
     float : right;
 }
 
+
 .WriteBtn:hover
 {
   color:white;
@@ -232,10 +244,20 @@ body
   float: right;
 }
 
+.textArea
+{
+  text-align: center;
+}
+
+.textArea textarea{
+  width: 50%;
+  height: 150px;
+}
+
+
 
 
 
 
   @media (min-width: 1200px) {
-
   }
